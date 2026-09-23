@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Horizon Scope Technologies exhibition kiosk for immersive 360 degree Matterport tours."
+    />
+    <title>Horizon Scope | 360 Virtual Experience</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307192d'/%3E%3Cpath d='M11 33h42M32 11v42M18 21c7 4 21 4 28 0M18 43c7-4 21-4 28 0' fill='none' stroke='%23008fd3' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='11' fill='none' stroke='%2300b7e8' stroke-width='4'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <div class="site-shell" id="kiosk">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <header class="topbar" aria-label="Horizon Scope exhibition controls">
+        <div class="brand" aria-label="Horizon Scope">
+          <img
+            class="brand-logo"
+            src="assets/images/horizon-logo-white.png"
+            alt="Horizon Scope"
+          />
+        </div>
+
+        <div class="experience-label">
+          <span class="label-dot" aria-hidden="true"></span>
+          <span>360&deg; Virtual Experience</span>
+        </div>
+
+        <div class="topbar-actions">
+          <a
+            class="partner-logo-link"
+            href="https://www.abaad-aliraq.com/"
+            aria-label="Visit Abaad Al Iraq website"
+          >
+            <img
+              class="partner-logo"
+              src="assets/images/abaad-logo.png"
+              alt="Abaad Al Iraq"
+            />
+          </a>
+
+          <button
+            class="icon-button"
+            id="fullscreenButton"
+            type="button"
+            aria-label="Enter fullscreen"
+            title="Fullscreen"
+          >
+            <svg class="icon enter-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5" />
+            </svg>
+            <svg class="icon exit-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 3v6H3M15 3v6h6M21 15h-6v6M3 15h6v6" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="experience" aria-live="polite">
+        <section class="viewer-zone" aria-label="Matterport virtual tour">
+          <nav class="tour-switcher" aria-label="Select virtual tour">
+            <button
+              class="tour-tab is-active"
+              type="button"
+              data-tour="dataCenter"
+              aria-pressed="true"
+            >
+              <span class="tab-number">01</span>
+              <span class="tab-title">Data Center</span>
+            </button>
+            <button
+              class="tour-tab"
+              type="button"
+              data-tour="powerRoom"
+              aria-pressed="false"
+            >
+              <span class="tab-number">02</span>
+              <span class="tab-title">Power Room</span>
+            </button>
+          </nav>
+
+          <div class="viewer-frame" id="viewerFrame">
+            <div class="viewer-loader" id="viewerLoader" aria-hidden="false">
+              <div class="loader-ring"></div>
+              <span>Loading 360&deg; tour</span>
+            </div>
+            <iframe
+              id="matterportViewer"
+              title="Data Center 360 degree virtual tour"
+              src="https://my.matterport.com/show/?m=t2e4a7ZJzU6"
+              allow="fullscreen; xr-spatial-tracking; autoplay"
+              allowfullscreen
+              loading="eager"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+        </section>
+
+        <aside class="info-panel" aria-label="Selected tour information">
+          <div class="tour-copy" id="tourCopy">
+            <p class="eyebrow" id="tourLabel">360&deg; Virtual Tour</p>
+            <h1 id="tourTitle">Data Center</h1>
+            <p id="tourDescription">
+              Explore Horizon Scope's data center environment in an immersive
+              360&deg; experience.
+            </p>
+            <ul class="tour-highlights" id="tourHighlights">
+              <li>Move through the facility and inspect rack zones, cooling paths, and secure access points.</li>
+              <li>Matterport 3D capture gives visitors a realistic sense of scale and layout.</li>
+              <li>QR access lets visitors continue the same tour instantly on their phone.</li>
+            </ul>
+          </div>
+
+          <div class="qr-block" id="qrBlock">
+            <div class="qr-heading">
+              <span>Scan to Explore</span>
+              <small>Continue the experience on your phone</small>
+            </div>
+            <div class="qr-card">
+              <div class="scan-line" aria-hidden="true"></div>
+              <img
+                id="qrImage"
+                src="assets/qr/t2e4a7ZJzU6_QR.jpg"
+                alt="QR code for Data Center virtual tour"
+              />
+              <p class="qr-missing" id="qrMissing" hidden>
+                Place the QR image at this path.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel-footer">
+            <span>360&deg; Experience by Abaad Al Iraq</span>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
